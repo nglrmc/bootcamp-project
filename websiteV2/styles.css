@@ -1,53 +1,48 @@
-:root {
-  --black: #0a0a0a;
-  --white: #fcf8f8;
-  --gray: #888;
-  --light-gray: #1e1e1e;
-  --card-bg: #141414;
-  --font-display: 'Bebas Neue', sans-serif;
-  --font-body: 'Barlow', sans-serif;
-  --nav-height: 60px;
-}
-
 /* ─── Reset: remove default browser spacing and box model fixes ─── */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 html { 
   scroll-behavior: smooth; 
 }
 
 body {
-  background-color: var(--black);
-  color: var(--white);
-  font-family: var(--font-body);
+  background-color: #0a0a0a;
+  color: #fcf8f8;
+  font-family: 'Barlow', sans-serif;;
   font-weight: 400;
   overflow-x: hidden;
 }
 
 /* ─── Utility class to hide elements from view but keep in DOM ─── */
-.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+.sr-only { 
+  position: absolute; 
+  width: 1px; 
+  height: 1px; 
+  overflow: hidden; 
+  clip: rect(0,0,0,0); }
 
 nav {
   position: sticky;         
   top: 0;
   z-index: 100;          
-  background-color: black;
+  background-color: #0a0a0a;
   border-bottom: 1px solid #1e1e1e;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 50px;  
-  height: var(--nav-height);
+  height: 60px;
 }
 
 .nav-logo {
-  font-family: var(--font-display);
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 28px;
   letter-spacing: 3px;
-  color: var(--white);
+  color: #fcf8f8;
   text-decoration: none;
 }
 
@@ -60,48 +55,31 @@ nav {
   gap: 30px;
   list-style: none;
 }
+
 .nav-links a {
   text-decoration: none;
-  color: var(--gray);
+  color: #888;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: color 0.2s;
 }
-.nav-links a:hover { color: var(--white); }
 
-/* Right side icons: search and cart */
-.nav-actions {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.nav-actions button {
-  background: none;
-  border: none;
-  color: var(--gray);
-  font-size: 18px;
-  cursor: pointer;
-  transition: color 0.2s;
-}
-
-.nav-actions button:hover { 
-  color:#e5ff00; }
+.nav-links a:hover { color: #fcf8f8; }
 
 /* Mobile nav dropdown: hidden by default */
 .mobile-nav {
   display: none;
   flex-direction: column;
-  background: var(--black);
-  border-top: 1px solid var(--light-gray);
+  background: #0a0a0a;
+  border-top: 1px solid #1e1e1e;
   padding: 20px 40px;
   gap: 16px;
 }
 
 .mobile-nav a {
-  color: var(--white);
+  color: #fcf8f8;
   text-decoration: none;
   font-size: 15px;
   font-weight: 600;
@@ -119,7 +97,7 @@ nav {
   display: flex;
   align-items: flex-end;   
   overflow: hidden;
-  background: var(--black);
+  background: #0a0a0a;
 }
 
 .hero::before {
@@ -136,7 +114,7 @@ nav {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: var(--font-display);
+  font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(120px, 20vw, 260px); 
   color: rgba(255,255,255,0.03);       
   letter-spacing: -5px;
@@ -160,7 +138,6 @@ nav {
   to { opacity: 1; transform: translateX(0); }
 }
 
-/* Text content container inside the hero */
 .hero-content {
   position: relative;
   z-index: 2;
@@ -171,13 +148,11 @@ nav {
   animation: fadeUp 0.9s 0.2s forwards ease-out; 
 }
 
-/* Keyframe: text fades up from below */
 @keyframes fadeUp {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Small label above the hero headline */
-.hero-eyebrow {
+.hero-top {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 3px;
@@ -186,9 +161,8 @@ nav {
   margin-bottom: 16px;
 }
 
-/* Main hero headline using display font */
 .hero h1 {
-  font-family: var(--font-display);
+  font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(52px, 8vw, 110px);
   line-height: 0.92;
   letter-spacing: -1px;
@@ -202,7 +176,7 @@ nav {
 
 .hero-desc {
   font-size: 15px;
-  color: var(--gray);
+  color: #888;
   line-height: 1.7;
   margin-bottom: 36px;
   max-width: 400px;
@@ -214,12 +188,12 @@ nav {
   flex-wrap: wrap;
 }
 
-.btn-primary {
+.shop-btn {
   background: #e5ff00;
   color: #0a0a0a;
   border: none;
   padding: 14px 32px;
-  font-family: var(--font-body);
+  font-family: 'Barlow', sans-serif;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -228,17 +202,17 @@ nav {
   transition: transform 0.2s, background 0.2s;
 }
 
-.btn-primary:hover {
+.shop-btn:hover {
   transform: translateY(-2px);
   background: #d4f000;
 }
 
-.btn-secondary {
+.explore-btn {
   background: transparent;
-  color: var(--white);
+  color: #fcf8f8;
   border: 1px solid rgba(255,255,255,0.3);
   padding: 14px 32px;
-  font-family: var(--font-body);
+  font-family: 'Barlow', sans-serif;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -246,9 +220,10 @@ nav {
   cursor: pointer;
   transition: border-color 0.2s, color 0.2s;
 }
-.btn-secondary:hover {
-  border-color: var(--white);
-  color: var(#e5ff00);
+
+.explore-btn:hover {
+  border-color: #fcf8f8;
+  color: #e5ff00;
 }
 
 section {
@@ -272,29 +247,32 @@ section {
 }
 
 .section-title {
-  font-family: var(--font-display);
+  font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(32px, 5vw, 60px);
   line-height: 1;
   letter-spacing: 1px;
 }
 
 .section-link {
-  color: var(--gray);
+  color: #888;
   text-decoration: none;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  border-bottom: 1px solid var(--gray);
+  border-bottom: 1px solid #888;
   padding-bottom: 2px;
   white-space: nowrap;
   transition: color 0.2s, border-color 0.2s;
 }
 
-.section-link:hover { color: #e5ff00; border-color: #e5ff00; }
+.section-link:hover { 
+  color: #e5ff00; 
+  border-color: #e5ff00; 
+}
 
-.categories-strip {
-  background: var(--light-gray);
+.mice-types {
+  background: #1e1e1e;
   padding: 50px 40px;
 }
 
@@ -311,10 +289,10 @@ footer {
 }
 
 .footer-brand .logo {
-  font-family: var(--font-display);
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 36px;
   letter-spacing: 4px;
-  color: var(--white);
+  color: #fcf8f8;
   margin-bottom: 16px;
   display: block;
 }
@@ -324,18 +302,18 @@ footer {
 }
 
 .footer-brand p {
-  color: var(--gray);
+  color: #888;
   font-size: 13px;
   line-height: 1.8;
   max-width: 260px;
 }
 
 .footer-col h4 {
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--white);
+  color: #fcf8f8;
   margin-bottom: 20px;
 }
 
@@ -348,7 +326,7 @@ footer {
 }
 
 .footer-col ul li a {
-  color: var(--gray);
+  color: #888;
   text-decoration: none;
   font-size: 13px;
   transition: color 0.2s;
@@ -359,7 +337,7 @@ footer {
 }
 
 .footer-bottom {
-  border-top: 1px solid var(--light-gray);
+  border-top: 1px solid #1e1e1e;
   padding-top: 24px;
   display: flex;
   align-items: center;
@@ -369,7 +347,7 @@ footer {
 }
 
 .footer-bottom p {
-  color: var(--gray);
+  color: #888;
   font-size: 12px;
 }
 
