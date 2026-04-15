@@ -1,100 +1,89 @@
-const images = ["assets/attacksharkX3-side.png", 
-    "assets/asusrogharp2-side.png", 
-    "assets/vxer1se+-side.png"];
-
 let currentIndex = 0;
-const slideContainer = document.getElementById('carouselSlide');
-const indicatorsContainer = document.getElementById('indicator');
+const slideContainer = document.getElementById('slide');
+const navToggle = document.getElementById('nav-toggle');
+const mobileNav = document.getElementById('mobile-nav');
 let autoSlideInterval;
 
-// Create slides and indicators
-function createCarousel() {
-    slideContainer.innerHTML = '';
-    indicatorsContainer.innerHTML = '';
-
-    images.forEach((imgSrc, index) => {
-    // Create image element
-    const img = document.createElement('img');
-    img.src = imgSrc;
-    img.alt = `Slide ${index + 1}`;
-    slideContainer.appendChild(img);
-
-    // Create indicator
-    const indicator = document.createElement('div');
-    indicator.classList.add('indicator');
-    if (index === 0) indicator.classList.add('active');
-    
-    indicator.addEventListener('click', () => {
-        goToSlide(index);
-    });
-    
-    indicatorsContainer.appendChild(indicator);
-    });
+function updateSlide() {
+    if (!slideContainer) return;
+    slideContainer.style.transform = `translateX(-${currentIndex * 33.333}%)`;
 }
 
-// Update active indicator
-function updateIndicators() {
-    const indicators = document.querySelectorAll('.indicator');
-    indicators.forEach((indicator, index) => {
-    indicator.classList.toggle('active', index === currentIndex);
-    });
-}
-
-// Go to specific slide
-function goToSlide(index) {
-    currentIndex = index;
-    slideContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-    updateIndicators();
-}
-
-// Next slide
 function nextSlide() {
-    currentIndex = (currentIndex + 1) % images.length;
-    slideContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-    updateIndicators();
+    currentIndex = (currentIndex + 1) % 3;
+    updateSlide();
 }
 
-// Previous slide
 function prevSlide() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    slideContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-    updateIndicators();
+    currentIndex = (currentIndex - 1 + 3) % 3;
+    updateSlide();
 }
 
-// Auto slide function
 function startAutoSlide() {
     stopAutoSlide();
-    autoSlideInterval = setInterval(nextSlide, 4000); // Change every 4 seconds
+    autoSlideInterval = setInterval(nextSlide, 5500);
 }
 
 function stopAutoSlide() {
     clearInterval(autoSlideInterval);
 }
 
-// Event Listeners
-function setupEventListeners() {
-    document.getElementById('btn-next').addEventListener('click', () => {
-    nextSlide();
-    startAutoSlide(); // Reset timer on manual click
-    });
-
-    document.getElementById('btn-prev').addEventListener('click', () => {
-    prevSlide();
-    startAutoSlide();
-    });
-
-    // Pause on hover
-    const carousel = document.querySelector('.carousel');
-    carousel.addEventListener('mouseenter', stopAutoSlide);
-    carousel.addEventListener('mouseleave', startAutoSlide);
+function closeMobileNav() {
+    if (!mobileNav || !navToggle) return;
+    mobileNav.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
 }
 
-// Initialize Carousel
+function toggleMobileNav() {
+    if (!mobileNav || !navToggle) return;
+    const isOpen = mobileNav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+}
+
+function setupEventListeners() {
+    const nextButton = document.querySelector('.next');
+    const prevButton = document.querySelector('.prev');
+    const carousel = document.querySelector('.mouse');
+
+    if (nextButton) {
+        nextButton.addEventListener('click', () => {
+            nextSlide();
+            startAutoSlide();
+        });
+    }
+
+    if (prevButton) {
+        prevButton.addEventListener('click', () => {
+            prevSlide();
+            startAutoSlide();
+        });
+    }
+
+    if (carousel) {
+        carousel.addEventListener('mouseenter', stopAutoSlide);
+        carousel.addEventListener('mouseleave', startAutoSlide);
+    }
+
+    if (navToggle) {
+        navToggle.addEventListener('click', toggleMobileNav);
+    }
+
+    if (mobileNav) {
+        mobileNav.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', closeMobileNav);
+        });
+    }
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            closeMobileNav();
+        }
+    });
+}
+
 function initCarousel() {
-    createCarousel();
     setupEventListeners();
     startAutoSlide();
 }
 
-// Start the carousel
 window.onload = initCarousel;
