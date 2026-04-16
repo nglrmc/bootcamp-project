@@ -152,24 +152,28 @@ nav {
   user-select: none;
 }
 
-.hero-mouse, .featured-mouse {
+.hero-mouse {
   position: absolute;
-  right: 90px;
-  bottom: 300px;
-  width: 450px;   
+  right: 200px;
+  bottom: 105px;
+  width: 500px;   
   opacity: 0;                           
-  transform: translateX(60px);         
-  animation: slideInmouse 1s 0.4s forwards ease-out; 
+  transform: translateX(60px);        
+  animation: slideInmouse 1s 0.5s forwards ease-out; 
   filter: drop-shadow(0 0 60px rgba(159, 160, 155, 0.425));
 }
 
 .featured-mouse {
-  font-size: 60px;
+  position: absolute;
+  right: 260px;
+  font-size: 70px;
   font-family: 'Bebas Neue', sans-serif;
-  bottom: 150px;
-  padding-left: 67px;
-  animation-delay: 0.6s;
+  bottom: 80px;
+  opacity: 0;
   letter-spacing: 1px;
+  transform: translateX(60px);         
+  animation: slideInmouse 1s 0.4s forwards ease-out;
+  filter: drop-shadow(0 0 60px rgba(159, 160, 155, 0.425)); 
 }
 
 @keyframes slideInmouse {
@@ -207,8 +211,7 @@ nav {
   margin-bottom: 20px;
 }
 
-.hero h1 em {
-  font-style: normal;
+span {
   color: #e5ff00;               
 }
 
@@ -508,6 +511,12 @@ footer {
     padding: 40px 30px;
   }
 
+  .featured-mouse {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .footer-grid {
     grid-template-columns: 1fr 1fr;
     gap: 24px;
@@ -518,6 +527,24 @@ footer {
   .nav-toggle {
     display: inline-flex;
   }
+
+  .featured-mouse {
+  position: relative;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  text-align: center;
+  width: 100%;
+  font-size: clamp(28px, 8vw, 50px);
+  margin: 12px 0;
+  animation: none;
+  opacity: 0;
+  letter-spacing: 1px;
+  transform: translateX(60px);         
+  animation: slideInmouse 1s 0.3s forwards ease-out;
+  filter: drop-shadow(0 0 60px rgba(159, 160, 155, 0.425));
+}
 
   .nav-links {
     display: none;
@@ -551,14 +578,15 @@ footer {
     right: auto;
     bottom: auto;
     width: 100%;
-    max-width: 420px;
-    margin: 0 0 30px;
-    transform: translateX(0);
+    max-width: 300px;
+    margin: auto;
+    align-self: center;
   }
 
   .hero-content {
     padding: 0;
     max-width: 100%;
+    
   }
 
   .hero h1 {
@@ -589,6 +617,12 @@ footer {
 }
 
 @media (max-width: 600px) {
+  
+  .h1 {
+
+    font-size: clamp(32px, 14vw, 60px);
+  }
+  
   nav {
     justify-content: space-between;
   }
@@ -596,6 +630,10 @@ footer {
   .hero {
     padding: 50px 18px;
   }
+
+.featured-mouse {
+  font-size: clamp(24px, 7vw, 36px);
+}
 
   .hero-btn {
     flex-direction: column;
