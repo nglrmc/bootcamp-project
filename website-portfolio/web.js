@@ -7,7 +7,6 @@ let autoSlideInterval;
 
 const modal = document.getElementById('myModal');
 const modalIds = ['vxe-modal', 'asus-modal', 'as-modal'];
-const btnIds = ['vxe-btn', 'asus-btn', 'as-btn' ];
 
 function openModal(modalId) {
     // Hide all modal content panels first
@@ -31,12 +30,13 @@ function closeModal() {
 }
 
 function setupModalListeners() {
-    // Wire each mouse button to its matching modal panel
-    btnIds.forEach((btnId, i) => {
-        const btn = document.getElementById(btnId);
-        if (btn) {
-            btn.addEventListener('click', () => openModal(modalIds[i]));
-        }
+    // Wire each view more button to its matching modal panel
+    const viewMoreBtns = document.querySelectorAll('.view-more-btn');
+    viewMoreBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const modalId = btn.getAttribute('data-modal');
+            openModal(modalId);
+        });
     });
 
     // Close buttons inside each modal panel
