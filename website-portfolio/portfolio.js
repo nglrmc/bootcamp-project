@@ -1,30 +1,30 @@
-const sections = document.querySelectorAll('section, #home');
-const links = document.querySelectorAll('.nav-links a');
+document.addEventListener('DOMContentLoaded', () => {
+  
+  const links = document.querySelectorAll('.nav-links a');
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
 
-const obs = new IntersectionObserver(entries => {
-entries.forEach(e => {
-    if (e.isIntersecting) {
-    links.forEach(l => l.classList.remove('active'));
-    const id = e.target.id;
-    const active = document.querySelector(`.nav-links a[href="#${id}"]`);
-    if (active) active.classList.add('active');
-    }
-});
-}, { threshold: 0.4 });
+  document.getElementById('email-btn').addEventListener('click', () => {
+    const to = "remochangelo@gmail.com";
+    window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${to}`);
+  })
 
-sections.forEach(s => obs.observe(s));
+  const fadeEls = document.querySelectorAll('.skill-card, .project-card');
+  const fadeObs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = `${i * 60}ms`;
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
 
-const fadeEls = document.querySelectorAll('.skill-card, .project-card');
-const fadeObs = new IntersectionObserver(entries => {
-entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-    e.target.style.transitionDelay = `${i * 60}ms`;
-    e.target.classList.add('visible');
-    }
-});
-}, { threshold: 0.1 });
-
-fadeEls.forEach(el => {
-el.classList.add('fade-up');
-fadeObs.observe(el);
+  fadeEls.forEach(el => {
+    el.classList.add('fade-up');
+    fadeObs.observe(el);
+  });
 });

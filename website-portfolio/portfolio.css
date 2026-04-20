@@ -62,11 +62,13 @@ nav {
   transition: color 0.2s;
 }
 
-.nav-links a:hover, .nav-links a.active {
+.nav-links a:hover {
   color: var(--text-primary);
 }
 
-.nav-links a.active { color: var(--accent-soft); }
+.nav-links a.active { 
+  color: var(--accent-soft); 
+}
 
 .nav-toggle {
   background: none; border: none; cursor: pointer;
@@ -98,6 +100,12 @@ nav {
   grid-template-columns: 1fr auto;
   align-items: center;
   gap: 4rem;
+}
+
+.landing-page {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
 }
 
 .hero-left { 
@@ -373,11 +381,6 @@ section {
   font-weight: 500;
 }
 
-.skill-level {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -413,11 +416,21 @@ section {
 }
 
 .project-card p {
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 300;
   color: #999;
   line-height: 1;
   margin-bottom: 1.2rem;
+}
+
+.web-link a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.web-link a:hover {
+  color: var(--accent-soft);
+  text-decoration: underline;
 }
 
 .project-stack {
@@ -429,7 +442,7 @@ section {
 .stack-pill {
   font-size: 0.72rem;
   padding: 0.2rem 0.6rem;
-  border-radius: 99px;
+  border-radius: 5px;
   background: rgba(124,108,252,0.1);
   border: 1px solid rgba(124,108,252,0.2);
   color: var(--accent-soft);
@@ -485,17 +498,6 @@ footer {
   background: var(--border);
   max-width: 1100px;
   margin: 0 auto;
-}
-
-.fade-up {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 @media (max-width: 768px) {

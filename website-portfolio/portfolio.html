@@ -6,7 +6,7 @@
     <title>MY PORTFOLIO</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="portfolio.css" rel="stylesheet">
-    <script src="portfolio.js"></script>
+    <script src="portfolio.js" defer></script>
 </head>
 <body>
   <nav>
@@ -20,10 +20,10 @@
     <p></p><p></p><p></p>
     </button>
   </nav>
-  <div id="home" style="position:relative;">
+  <div id="home">
     <div class="hero-deco"></div>
     <div class="hero-grid">
-      <div style="display:flex; gap:2rem; align-items:center;">
+      <div class="landing-page">
         <div class="hero-left">
           <p class="hero-eyebrow">Welcome to my portfolio</p>
           <h1>Hi, I'm<br>Angelo Remocha</h1>
@@ -63,27 +63,22 @@
           <div class="HTML">
             <img src="stacks/html-logo.png" alt="HTML">
             <p class="skill-name">HTML</p>
-            <p class="skill-level">Mid-Level</p>
           </div>
           <div class="CSS">
             <img src="stacks/css-logo.png" alt="CSS">
             <p class="skill-name">CSS</p>
-            <p class="skill-level">Mid-Level</p>
           </div>
           <div class="JavaScript">
             <img src="stacks/javascript-logo.png" alt="JavaScript">
             <p class="skill-name">JavaScript</p>
-            <p class="skill-level">Basics</p>
           </div>
           <div class="MySQL">
             <img src="stacks/mysql-logo.png" alt="MySQL">
             <p class="skill-name">MySQL</p>
-            <p class="skill-level">Basics</p>
           </div>
           <div class="GIT">
             <img src="stacks/git-logo.png" alt="Git">
             <p class="skill-name">GIT</p>
-            <p class="skill-level">Basics</p>
           </div>
         </div>
       </div>
@@ -97,9 +92,20 @@
             <h3>THE RUSTIC TERROR</h3>
             <p>3D ARTIST</p>
             <div class="project-stack">
-              <p class="stack-pill">Blender</p>
               <p class="stack-pill">UE5</p>
               <p class="stack-pill">BlueprintUE</p>
+              <p class="stack-pill">Blender</p>
+            </div>
+          </div>
+          <div class="project-card">
+            <p class="project-tag">BOOTCAMP PROJECT</p>
+            <h3>MOUSE WEBSITE</h3>
+            <p>DEVELOPER</p>
+            <p class="web-link"><a href="https://mouse-website.vercel.app/" target="_blank">VIEW PROJECT</a></p>
+            <div class="project-stack">
+              <p class="stack-pill">HTML5</p>
+              <p class="stack-pill">CSS3</p>
+              <p class="stack-pill">JavaScript</p>
             </div>
           </div>
         </div>
@@ -113,9 +119,9 @@
     <div class="contact-wrap">
       <p>Have a project in mind or just want to say hello? I'd love to hear from you. Reach out through any of the channels below.</p>
       <div class="contact-links">
-        <a href="https://outlook.cloud.microsoft/" class="contact-link">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email</a>
-        <a href="https://github.com/nglrmc" class="contact-link">
+        <button class="contact-link" id="email-btn" target="_blank">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email</button>
+        <a href="https://github.com/jitsuangelo" class="contact-link" id="github-btn" target="_blank">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>GitHub</a>
       </div>
     </div>
